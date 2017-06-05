@@ -1,0 +1,18 @@
+{% extends 'myapp/base.html' %}
+
+
+{% block body %}
+
+    <body>
+
+    <h1>Below are the Host details </h1>
+    <ul>
+        {% for data in distinct_host%}
+        <li> <a href="/myapp/host_details?hostname={{data}}">{{data}}</a>  </li>
+        {% endfor%}
+    </ul>
+
+
+    </body>
+    </html>
+{% endblock %}

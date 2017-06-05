@@ -1,0 +1,26 @@
+{% extends 'myapp/base.html' %}
+{% block title%}File Upload{% endblock %}
+
+{% block body %}
+  {% load static %}
+  <label class="custom-file-upload">
+    <form method="post" action="/myapp/upload/" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="myfile" size="80" >
+      <button type="submit">Upload</button>
+    </form>
+  </label>
+    {% if uploaded_file_url %}
+      <p>File uploaded at for processing: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+    {% endif %}
+    {{error}}
+  <h4>Data avalilable for below dates</h4>
+  {{bunch_date}}
+
+  <ul>
+        {% for data in bunch_date %}
+        {% endfor%}
+  </ul>
+
+
+{% endblock %}

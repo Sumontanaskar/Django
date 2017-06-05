@@ -1,0 +1,43 @@
+{% extends 'myapp/base.html' %}
+{% block title%}Result{% endblock %}
+
+{% block body %}
+    <head>
+        <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+            text-align: center;
+        }
+        </style>
+
+    </head>
+
+
+    <body>
+        <table style="width:80%">
+            <tr>
+                <th>Host Name</th>
+                <th>Data of the date</th>
+                <th>Data Transmit</th>
+                <th>Data Received</th>
+                <th>Total Data</th>
+            </tr>
+    {% for data in all_host%}
+     	<tr>
+		<td>{{data.host}}</td>
+                <td>{{data.date}}</td>
+                <td>{{data.din}}</td>
+                <td>{{data.dout}}</td>
+                <td>{{data.dtot}}</td>
+        </tr>
+    {% endfor%}
+        </table>
+        <br>
+        <h4>{{no_data}}</h4>
+        <br>
+        <h4>{{error}}</h4>
+    </body>
+    </html>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'myapp/base.html' %}
+{% block title%}Details{% endblock %}
+
+{% block body %}
+    <head>
+        <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+            text-align: center;
+        }
+        </style>
+    </head>
+    <body>
+
+        <table style="width:80%">
+          <tr>
+            <th>Host ID</th>
+            <th>Host Name</th>
+            <th>Data of the date</th>
+            <th>Data Transmit</th>
+            <th>Data Received</th>
+            <th>Total Data</th>
+          </tr>
+           <tr>
+            <td>{{host.id}}</td>
+            <td>{{host.host}}</td>
+            <td>{{host.date}}</td>
+            <td>{{host.din}}</td>
+            <td>{{host.dout}}</td>
+            <td>{{host.dtot}}</td>
+          </tr>
+        </table>
+    </body>
+    </html>
+{% endblock %}
