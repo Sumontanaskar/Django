@@ -14,8 +14,8 @@ urlpatterns = [
     #url(r'^results/$', views.results, name='result'),
     # /myapp/search
     url(r'^search/$', views.search, name='search'),
-    #/myapp/relaod
-    url(r'^reload/$', views.AutoUpload, name='AutoUpload'),
+    #/myapp/list
+    url(r'^upload/$', views.upload, name='upload'),
 ]
 
 if settings.DEBUG:

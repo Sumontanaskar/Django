@@ -3,9 +3,8 @@ from django.http import Http404, HttpResponseRedirect
 from .models import Dreamreal
 from django.db.models import Q
 from django.core.files.storage import FileSystemStorage
-from .forms import handle_uploaded_file, handle_file
+from .forms import handle_uploaded_file, DataValidate
 from django.utils.dateparse import parse_datetime
-import os
 
 # Create your views here.
 def index(request):
@@ -78,18 +77,3 @@ def host_details(request):
     hostname = request.GET.get('hostname')
     all_host = Dreamreal.objects.filter(host=hostname).order_by('-date')
     return render(request, 'myapp/results.html', {'all_host': all_host, 'hostname': hostname})
-#Auto upload
-def AutoUpload(request):
-    path = 'media/'
-    csv_list = os.listdir(path)
-    for file in csv_list:
-        path = 'media/'+file
-        f = open( path, 'r')
-
-        handle_file(f)
-    all_host = Dreamreal.objects.all()
-    distinct_host = Dreamreal.objects.order_by('host').values('host').distinct()
-    host = []
-    for list in distinct_host:
-        host.append(list['host'])
-    return render(request, 'myapp/index.html', {'all_host': all_host, 'distinct_host': host})

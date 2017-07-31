@@ -1,0 +1,23 @@
+{% extends 'myapp/base.html' %}
+{% block title%}File Upload{% endblock %}
+
+{% block body %}
+  {% load static %}
+
+    <form method="post" action="/myapp/upload/" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="myfile">
+      <button type="submit">Upload</button>
+    </form>
+
+    {% if uploaded_file_url %}
+      <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+    {% endif %}
+
+    {%for host in all_host%}
+    <li>{{host.host}}</li>
+    {% endfor%}
+
+    <p><a href="{% url 'index' %}">Return to home</a></p>
+
+{% endblock %}
